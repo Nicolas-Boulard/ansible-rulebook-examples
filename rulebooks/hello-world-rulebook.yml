@@ -15,7 +15,7 @@
     - name: Send message to docker logs
       condition: event.payload.message == "hello"
       action:
-        run_playbook:
+        run_job_template:
           name: hello-world-playbook.yml
           extra_vars:
             user: "{{event.payload.user}}"
