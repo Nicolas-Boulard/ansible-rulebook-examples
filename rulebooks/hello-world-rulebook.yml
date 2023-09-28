@@ -1,6 +1,6 @@
 ---
 - name: Listen for events on a webhook
-  hosts: localhost
+  hosts: awx_1
 
   ## Define our source for events
 

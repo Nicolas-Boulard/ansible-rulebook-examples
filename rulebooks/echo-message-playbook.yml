@@ -1,4 +1,4 @@
-- hosts: host1
+- hosts: awx_1
   connection: local
   tasks:
     - name: Print hello-world-playbook.yml
