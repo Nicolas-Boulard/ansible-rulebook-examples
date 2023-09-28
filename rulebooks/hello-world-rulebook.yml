@@ -1,6 +1,6 @@
 ---
 - name: Listen for events on a webhook
-  hosts: awx_1
+  hosts: all
 
   ## Define our source for events
 
@@ -12,10 +12,8 @@
   ## Define the conditions we are looking for
 
   rules:
-    - name: Send message to docker logs
+    - name: Say hello
       condition: event.payload.message == "hello"
       action:
-        run_job_template:
-          name: hello-world-playbook.yml
-          extra_vars:
-            user: "{{event.payload.user}}"
+        debug:
+          msg: "Hello {{ event.payload.user }} !"

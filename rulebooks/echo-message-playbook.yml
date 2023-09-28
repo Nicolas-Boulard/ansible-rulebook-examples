@@ -1,6 +1,5 @@
 - hosts: awx_1
   connection: local
-  tasks:
-    - name: Print hello-world-playbook.yml
-      debug:
-        msg: "Hello {{ user }} !"
+  action:
+    debug:
+      msg: "Hello {{ user }} !"
