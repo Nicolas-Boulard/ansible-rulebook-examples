@@ -1,0 +1,6 @@
+- hosts: host1
+  connection: local
+  tasks:
+    - name: Print hello-world-playbook.yml
+      debug:
+        msg: "Hello {{ user }} !"
