@@ -1,0 +1,15 @@
+---
+- name: Zabbix test rulebook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5001
+  rules:
+    - name: Run playbook for office in Berlin
+      condition: >-
+        event.payload.host_groups is select("==","web-server-host") and
+        event.payload.event_tags.error_code is select("==","ERR_DOWN")
+      action:
+        run_playbook:
+          name: ../playbooks/apache_playbook.yaml
