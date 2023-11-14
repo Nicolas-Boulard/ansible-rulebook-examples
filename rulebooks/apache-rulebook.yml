@@ -11,5 +11,7 @@
         event.payload.host_groups is select("==","web-server-host") and
         event.payload.event_tags.error_code is select("==","ERR_DOWN")
       action:
-        run_playbook:
-          name: ../playbooks/apache_playbook.yaml
+        run_job_template:
+          name: apache-remediate
+          job_args:
+            limit: "{{ event.meta.hosts }}"
