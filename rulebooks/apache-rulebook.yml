@@ -7,9 +7,9 @@
         port: 5001
   rules:
     - name: Run playbook to turn on httpd
-      # condition: >-
-      #   event.payload.host_groups is select("==","web-server1") and
-      #   event.payload.event_tags.error_code is select("==","ERR_DOWN")
+      condition: >-
+        event.payload.host_groups is select("==","web-server1") and
+        event.payload.event_tags.error_code is select("==","ERR_DOWN")
       action:
         debug:
           msg: "{{ event.payload }}"
