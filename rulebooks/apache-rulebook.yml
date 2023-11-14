@@ -12,7 +12,9 @@
         event.payload.event_tags.error_code is select("==","ERR_DOWN")
       action:
         debug:
-          msg: "{{ event.payload }}"
+          msg:
+            - "messagetest"
+            - "{{ event.payload }}"
         # run_job_template:
         #   name: apache-remediate
         #   job_args:
