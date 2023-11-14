@@ -6,12 +6,14 @@
         host: 0.0.0.0
         port: 5001
   rules:
-    - name: Run playbook for office in Berlin
-      condition: >-
-        event.payload.host_groups is select("==","web-server1") and
-        event.payload.event_tags.error_code is select("==","ERR_DOWN")
+    - name: Run playbook to turn on httpd
+      # condition: >-
+      #   event.payload.host_groups is select("==","web-server1") and
+      #   event.payload.event_tags.error_code is select("==","ERR_DOWN")
       action:
-        run_job_template:
-          name: apache-remediate
-          job_args:
-            limit: "{{ event.payload.host_groups }}"
+        debug:
+          msg: "{{ event.payload }}"
+        # run_job_template:
+        #   name: apache-remediate
+        #   job_args:
+        #     limit: "{{ event.payload.host_groups }}"
