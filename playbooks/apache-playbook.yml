@@ -1,6 +1,6 @@
 - hosts: all
   tasks:
-    - name: "sshd restart service"
+    - name: "httpd restart service"
       ansible.builtin.service:
-        name: sshd
+        name: httpd
         state: started
