@@ -14,9 +14,7 @@
 
     - name: Run playbook to turn on httpd
       condition: >-
-        event.payload.host_groups contains("Virtual machines") and
-        event.payload.host_host is select("==","nboweb") and
-        event.payload.event_tags.launch-eda-remediation is defined
+        event.payload.host_host is select("==","nboweb")
       action:
         run_job_template:
           name: apache-remediate
