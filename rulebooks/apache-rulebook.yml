@@ -14,7 +14,7 @@
 
     - name: Run playbook to turn on httpd
       condition: >-
-        event.payload.host_groups contains("Virtual machines")
+        event.payload.event_tags.launch-eda-remediation is defined
       action:
         run_job_template:
           name: apache-remediate
