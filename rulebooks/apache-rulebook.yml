@@ -7,7 +7,6 @@
         port: 5001
   rules:
     - name: Run playbook to turn on httpd
-      condition: event.status == "enabled"
+      condition: event.payload is defined
       action:
         debug:
-          msg: "{{ event }}"
