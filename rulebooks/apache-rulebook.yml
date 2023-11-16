@@ -7,12 +7,6 @@
         port: 5001
   rules:
     - name: Run playbook to turn on httpd
-      condition: >-
-        event.payload.host_groups is select("==","nboweb") and
-        event.payload.event_tags.error_code is select("==","ERR_DOWN")
       action:
-        run_job_template:
-          name: apache-remediate
-          organization: Default
-          job_args:
-            limit: "{{ event.payload.host_groups }}"
+        debug:
+          msg: "DATA: {{ event.payload }} !"
