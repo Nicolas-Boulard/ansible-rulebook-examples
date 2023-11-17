@@ -7,6 +7,7 @@
         port: 5001
   rules:
     - name: Run playbook to turn on httpd
+      # A noter que les tags avec des "-" ne sont pas accceptés
       condition: >-
         event.payload.host_groups contains("Virtual machines") and 
         event.payload.host_host is select("==","nboweb") and
@@ -16,7 +17,7 @@
           name: apache-remediate
           organization: Default
           job_args:
-            limit: "nboweb"
+            limit: "{{ event.payload.host_host }}"
 
     - name: Debug
       condition: event.payload is defined
