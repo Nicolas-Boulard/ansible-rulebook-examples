@@ -19,4 +19,4 @@
           name: apache-remediate
           organization: Default
           job_args:
-            limit: "{{ event.payload.host_host }}"
+            limit: "nboweb"
