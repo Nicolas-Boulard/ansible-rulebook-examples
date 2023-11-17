@@ -14,7 +14,7 @@
 
     - name: Run playbook to turn on httpd
       condition: #>-
-        event.payload.host_host == 'nboweb'
+        event.payload["host_host"] == "nboweb"
       action:
         run_job_template:
           name: apache-remediate
