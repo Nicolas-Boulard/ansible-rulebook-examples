@@ -13,8 +13,9 @@
           msg: "EVENT_MSG: {{ event }}"
 
     - name: Run playbook to turn on httpd
-      condition: >-
-        event.payload.host_host is select("==","nboweb")
+      condition:
+        all:
+          - event.payload.host_host == "nboweb"
       action:
         run_job_template:
           name: apache-remediate
