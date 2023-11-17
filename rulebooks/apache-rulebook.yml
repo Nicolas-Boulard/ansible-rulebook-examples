@@ -7,7 +7,10 @@
         port: 5001
   rules:
     - name: Run playbook to turn on httpd
-      condition: event.payload.host_groups contains("Virtual machines") and event.payload.host_host is select("==","nboweb")
+      condition: >-
+        event.payload.host_groups contains("Virtual machines") and 
+        event.payload.host_host is select("==","nboweb")
+        event.payload.event_tags.launch-eda-remediation is defined
       action:
         run_job_template:
           name: apache-remediate
@@ -20,5 +23,3 @@
       action:
         debug:
           msg:
-          # job_args:
-          #   limit: "nboweb"
