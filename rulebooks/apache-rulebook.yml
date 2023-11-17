@@ -10,7 +10,7 @@
       condition: event.payload is defined
       action:
         debug:
-          msg: "{{ event }}"
+          msg: "EVENT_MSG: {{ event }}"
 
     - name: Run playbook to turn on httpd
       condition: >-
